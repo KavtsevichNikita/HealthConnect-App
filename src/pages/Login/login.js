@@ -53,7 +53,7 @@ function Login() {
                 <Form.Item label='Password' name='password'>
                     <input type='password'/>
                 </Form.Item>
-                <button className='contained-btn my-1' type='submit'>Login</button>
+                <button className='contained-btn my-1 w-full' type='submit'>Login</button>
             
 
                 <Link className='underline' to='/register'>

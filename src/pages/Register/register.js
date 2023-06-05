@@ -54,7 +54,7 @@ function Register() {
         <Form.Item label="Password" name="password">
           <input type="password" />
         </Form.Item>
-        <button className="contained-btn my-1" type="submit">
+        <button className="contained-btn my-1 w-full" type="submit">
           Register
         </button>
 

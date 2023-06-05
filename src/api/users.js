@@ -50,6 +50,7 @@ export const LoginUser = async (payload) => {
     // decrypt password
 
     const user = userSnapShots.docs[0].data();
+    user.id = userSnapShots.docs[0].id
     const bytes = CryptoJS.AES.decrypt(user.password, 'healthy');
     const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
 
