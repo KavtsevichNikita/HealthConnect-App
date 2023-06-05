@@ -7,7 +7,6 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: #363636 !important;
 }
 
 /* Colors and backgrounds */
@@ -28,6 +27,10 @@ html {
 
 .justify-center {
   justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 .items-center {
   align-items: center;
@@ -151,4 +154,26 @@ input:focus {
 
 .antd-form-item {
   margin-bottom: 8px !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+
+.gap-1 {
+  gap: 10px;
+}
+
+/* spinner */
+
+
+.spinner-parent {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccccccc3;
+  z-index: 999;
 }

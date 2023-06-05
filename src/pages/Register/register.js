@@ -1,23 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, message } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createUser } from "../../api/users";
+import { useDispatch } from "react-redux";
+import { ShowLoader } from "../../redux/loaderSlice";
 
 function Register() {
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const onFinish = async (values) => {
     try {
+      dispatch(ShowLoader(true))
       const response = await createUser(values);
+      dispatch(ShowLoader(false))
 
       if (response.success) {
         message.success(response.message)
+        navigate('/login')
       } else {
         throw new Error(response.message)
       }
 
     } catch (error) {
+      dispatch(ShowLoader(false))
       message.error(message);
     }
   };
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'))
+
+    if (user) navigate('/')
+  }, [])
 
   return (
     <div className="flex justify-center items-center h-screen">

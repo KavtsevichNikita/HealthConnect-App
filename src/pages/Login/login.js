@@ -1,13 +1,41 @@
-import React from 'react'
-import { Form } from 'antd'
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react'
+import { Form, message } from 'antd'
+import { Link, useNavigate } from 'react-router-dom';
+import { LoginUser } from '../../api/users';
+import { useDispatch } from 'react-redux';
+import { ShowLoader } from '../../redux/loaderSlice';
 
 
 function Login() {
 
-    const onFinish = (values) => {
-        console.log(values);
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const onFinish = async (values) => {
+        try {
+            dispatch(ShowLoader(true))
+            const response = await LoginUser(values);
+            dispatch(ShowLoader(false))
+            if (response.success) {
+                message.success(response.message)
+                localStorage.setItem('user', JSON.stringify({
+                    ...response.data,
+                    password: ''
+                }))
+                navigate('/');
+            } else {
+                throw new Error(response.message)
+            }
+        } catch (error) {
+            dispatch(ShowLoader(false))
+            message.error(error.message) 
+        }
     }
+
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user) navigate(user ? '/' : '/login')
+    }, [])
 
 
     return (
