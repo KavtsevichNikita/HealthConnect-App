@@ -116,6 +116,7 @@ input, textarea, select {
   border: 1px solid grey;
   width: 100%;
   padding-left: 15px;
+  border-radius: 4px;
 }
 
 input:focus, textarea , select{
@@ -130,21 +131,21 @@ textarea {
 
 .contained-btn {
   height: 45px !important;
-  border-radius: 0 !important;
   background-color: black !important;
   color: #fff !important;
   text-transform: uppercase;
   padding: 0 20px;
+  border-radius: 4px;
 }
 
 .outlined-btn {
   height: 45px !important;
-  border-radius: 0 !important;
   background-color: white !important;
   color: black !important;
   text-transform: uppercase;
   border: 1px solid black;
   padding: 0 20px;
+  border-radius: 4px;
 }
 
 

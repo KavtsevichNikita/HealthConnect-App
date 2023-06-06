@@ -7,6 +7,8 @@ import Spinner from "./components/Spinner";
 import { useSelector } from "react-redux";
 import Profile from "./pages/Profile/Profile";
 import DoctorForm from "./pages/DoctorForm/DoctorForm";
+import Admin from "./pages/Admin/Admin";
+import Booking from "./pages/Booking/Booking";
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
           <Route path="/" element={<ProtectedRoutes> <Home/> </ProtectedRoutes>}/>
           <Route path="/profile" element={<ProtectedRoutes> <Profile/> </ProtectedRoutes>}/>
           <Route path="/apply-doctor" element={<ProtectedRoutes> <DoctorForm/> </ProtectedRoutes>}/>
+          <Route path="/admin" element={<ProtectedRoutes><Admin/></ProtectedRoutes>}/>
+          <Route path="/book-appoitment/:id" element={<ProtectedRoutes><Booking/></ProtectedRoutes>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
         </Routes>

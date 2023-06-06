@@ -12,7 +12,10 @@ function Register() {
   const onFinish = async (values) => {
     try {
       dispatch(ShowLoader(true))
-      const response = await createUser(values);
+      const response = await createUser({
+        ...values,
+        role: 'user'
+      });
       dispatch(ShowLoader(false))
 
       if (response.success) {
@@ -32,7 +35,7 @@ function Register() {
     const user = JSON.parse(localStorage.getItem('user'))
 
     if (user) navigate('/')
-  }, [])
+  })
 
   return (
     <div className="flex justify-center items-center h-screen">

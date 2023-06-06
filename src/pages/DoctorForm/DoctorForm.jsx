@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Form, Row, Col, message } from 'antd'
 import { useDispatch } from 'react-redux';
 import { ShowLoader } from '../../redux/loaderSlice';
-import { AddDoctor, GetDoctorById } from '../../api/doctors';
+import { AddDoctor, CheckIfDoctorAccountIsApplied } from '../../api/doctors';
 import { useNavigate } from 'react-router-dom';
 
 function DoctorForm() {
@@ -16,7 +16,7 @@ function DoctorForm() {
    const checkIfAlreadyApplied = async () => {
       try {
          dispatch(ShowLoader(true))
-         const response = await GetDoctorById(JSON.parse(localStorage.getItem('user')).id)
+         const response = await CheckIfDoctorAccountIsApplied(JSON.parse(localStorage.getItem('user')).id)
          if (response.sucess) {
             setValid(true)
          }
@@ -41,7 +41,8 @@ function DoctorForm() {
             ...values,
             days,
             userId: JSON.parse(localStorage.getItem('user')).id,
-            status: 'pending'
+            status: 'pending',
+            role: 'doctor'
          }
 
          const response = await AddDoctor(payload);

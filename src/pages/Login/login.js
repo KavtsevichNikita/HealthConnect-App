@@ -35,7 +35,7 @@ function Login() {
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'));
         if (user) navigate(user ? '/' : '/login')
-    }, [])
+    })
 
 
     return (
